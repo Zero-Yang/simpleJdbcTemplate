@@ -1,9 +1,11 @@
 # SimpleJdbcTemplate
 一个工程用来封装spring中的jdbcTemplate,用于简单的CRUD操作
 示例:
+
+
 spring中的配置文件
 applicationContext.xml
-  <!--自己定义的simpleJdbcTemplate -->
+  	<!--自己定义的simpleJdbcTemplate -->
 	<bean id="simpleJdbcTemplate" class="com.zero.simpleJdbc.SimpleJdbcTemplate">
 		<property name="jdbcTemplate">
 			<ref bean="jdbcTemplate" />
@@ -15,9 +17,12 @@ applicationContext.xml
 			<ref bean="simpleJdbcTemplate" />
 		</property>
 	</bean>
+	
+	
+	
 代码示例:
 public class LoginInfoDaoImpl implements LogInfoDao{
-   
+
 	private SimpleJdbcTemplate simpleJdbcTemplate;
 	
 	public LogInfo getLogInfo(int id) {
