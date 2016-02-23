@@ -16,7 +16,6 @@ applicationContext.xml
 		</property>
 	</bean>
 代码示例:
-
 public class LoginInfoDaoImpl implements LogInfoDao{
    
 	private SimpleJdbcTemplate simpleJdbcTemplate;
