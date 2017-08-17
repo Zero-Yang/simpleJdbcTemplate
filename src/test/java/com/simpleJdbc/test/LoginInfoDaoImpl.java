@@ -8,7 +8,6 @@ public class LoginInfoDaoImpl implements LogInfoDao{
 	public LogInfo getLogInfo(int id) {
 		String sql="select * from loginfo where id = ?";
 		LogInfo logInfo = simpleJdbcTemplate.selectOne(sql, new Object[]{id}, LogInfo.class);
-		simpleJdbcTemplate.insert("loginfo", new LogInfo(1,"1","1","1"));
 		return logInfo;
 	}
 

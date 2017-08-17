@@ -14,6 +14,7 @@
 		ignore-unresolvable="true" />
 	<!--开启注解处理器 -->
 	<context:annotation-config />
+	<context:component-scan base-package="com.java.*" />
 	<!-- 数据驱动 -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -34,9 +35,19 @@
 			<ref bean="jdbcTemplate" />
 		</property>
 	</bean>
+	
+
 	<bean id="logInfoDao" class="com.simpleJdbc.test.LoginInfoDaoImpl">
 		<property name="simpleJdbcTemplate">
 			<ref bean="simpleJdbcTemplate" />
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="jdbcTemplateProxy" class="com.java.jdbcTemplate.JdbcTemplateProxy">
+		<property name="jdbcTemplate">
+			<ref bean="jdbcTemplate" />
 		</property>
 	</bean>
 </beans>

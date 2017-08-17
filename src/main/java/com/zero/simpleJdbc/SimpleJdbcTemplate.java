@@ -13,7 +13,6 @@ public class SimpleJdbcTemplate {
 	private static final Log LOG = LogFactory.getLog(SimpleJdbcTemplate.class);
 	
 	private JdbcTemplate jdbcTemplate;
-    private Dialect dialect;
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
@@ -76,17 +75,6 @@ public class SimpleJdbcTemplate {
 	}
 	
 	
-	public void insert(String tableName,Object param){
-		dialect.forDialectSave(tableName, param);
-	}
-
-	public Dialect getDialect() {
-		return dialect;
-	}
-
-	public void setDialect(Dialect dialect) {
-		this.dialect = dialect;
-	}
 	
 	
 	
