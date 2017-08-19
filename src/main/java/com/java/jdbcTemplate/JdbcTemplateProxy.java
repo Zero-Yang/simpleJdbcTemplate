@@ -18,6 +18,7 @@ import com.java.jdbcTemplate.exception.NoIdAnnotationFoundException;
 import com.java.jdbcTemplate.impl.BatchUpdateSetter;
 import com.java.jdbcTemplate.impl.ReturnIdPreparedStatementCreator;
 import com.java.jdbcTemplate.model.SqlParamsPairs;
+import com.java.jdbcTemplate.utils.ArrayUtils;
 import com.java.jdbcTemplate.utils.IdUtils;
 import com.java.jdbcTemplate.utils.ModelSqlUtils;
 
@@ -26,6 +27,7 @@ public class JdbcTemplateProxy {
 	private Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
 	private JdbcTemplate jdbcTemplate;
+	
 
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
@@ -34,9 +36,16 @@ public class JdbcTemplateProxy {
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-
+    /**
+     * 查询单条记录
+     * @param sql
+     * @param params
+     * @param clazz
+     * @return
+     */
 	public <T> T selectOne(String sql, Object[] params, Class<T> clazz) {
 		List<T> list = this.<T> selectList(sql, params, clazz);
+		printSqlLog(sql, params);
 		if (list.size() == 1) {
 			return list.get(0);
 		} else if (list.size() > 1) {
@@ -47,8 +56,15 @@ public class JdbcTemplateProxy {
 			return null;
 		}
 	}
-
+    /**
+     * 查询多条记录,返回List
+     * @param sql
+     * @param params
+     * @param clazz
+     * @return
+     */
 	public <T> List<T> selectList(String sql, Object[] params, Class<T> clazz) {
+		printSqlLog(sql, params);
 		List<T> list = null;
 		if (params == null || params.length == 0) {
 			list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<T>(clazz));
@@ -58,11 +74,12 @@ public class JdbcTemplateProxy {
 		}
 		return list;
 	}
-
-	// public Map<String, Object> selectMap(String sql, Object[] params){
-	// return jdbcTemplate.queryForMap(sql, params);
-	// }
-
+    /**
+     * 查询条数 select count(1) from table 
+     * @param sql
+     * @param params
+     * @return
+     */
 	public int count(String sql, Object[] params) {
 		int rowCount = 0;
 		Map<String, Object> resultMap = null;
@@ -218,4 +235,20 @@ public class JdbcTemplateProxy {
 		return keyHolder.getKey().intValue();
 	}
 
+	/**
+	 * 输出SQL文件和参数
+	 * @param sql
+	 * @param values
+	 */
+	private void printSqlLog(String sql, Object... values) {
+		LOGGER.debug("execute sql:" + sql);
+		StringBuffer p = new StringBuffer();
+		if (values != null) {
+			p.append(ArrayUtils.join(values, "   "));
+		}
+		LOGGER.debug("execute sql params:" + p.toString());
+	}
+
+	
+	
 }

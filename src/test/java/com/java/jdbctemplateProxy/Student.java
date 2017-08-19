@@ -1,6 +1,6 @@
 package com.java.jdbctemplateProxy;
 
-import javax.persistence.Transient;
+import java.beans.Transient;
 
 public class Student {
 	

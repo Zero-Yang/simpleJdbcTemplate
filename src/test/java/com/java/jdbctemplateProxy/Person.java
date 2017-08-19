@@ -1,8 +1,8 @@
 package com.java.jdbctemplateProxy;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.java.jdbcTemplate.annotations.Column;
+import com.java.jdbcTemplate.annotations.Id;
+import com.java.jdbcTemplate.annotations.Table;
 
 @Table(name="person2")
 public class Person {

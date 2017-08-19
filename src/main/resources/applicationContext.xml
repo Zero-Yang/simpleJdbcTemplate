@@ -43,11 +43,11 @@
 		</property>
 	</bean>
 	
-	
-	
 	<bean id="jdbcTemplateProxy" class="com.java.jdbcTemplate.JdbcTemplateProxy">
 		<property name="jdbcTemplate">
 			<ref bean="jdbcTemplate" />
 		</property>
+		<property name="dialect" value="xxxxx"></property>
+		<property name="underscoreToCamelCase" value="true"></property>
 	</bean>
 </beans>

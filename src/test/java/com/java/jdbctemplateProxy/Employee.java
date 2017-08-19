@@ -2,8 +2,8 @@ package com.java.jdbctemplateProxy;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import com.java.jdbcTemplate.annotations.Column;
+import com.java.jdbcTemplate.annotations.Id;
 
 public class Employee {
 	private Integer id;

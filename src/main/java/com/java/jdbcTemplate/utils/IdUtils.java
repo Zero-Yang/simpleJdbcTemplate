@@ -3,9 +3,9 @@ package com.java.jdbcTemplate.utils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.java.jdbcTemplate.annotations.GeneratedValue;
+import com.java.jdbcTemplate.annotations.Id;
+import com.java.jdbcTemplate.model.GenerationType;
 
 
 public class IdUtils {

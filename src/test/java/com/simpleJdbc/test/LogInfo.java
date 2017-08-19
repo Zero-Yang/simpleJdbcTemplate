@@ -1,7 +1,9 @@
 package com.simpleJdbc.test;
 
+import com.java.jdbcTemplate.annotations.Id;
+import com.java.jdbcTemplate.annotations.Table;
+@Table(name="loginfo")
 public class LogInfo {
-	
 	private int id;
 	
 	private String name;
@@ -9,11 +11,10 @@ public class LogInfo {
 	private String error;
 	
 	private String status;
-
+	@Id
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
