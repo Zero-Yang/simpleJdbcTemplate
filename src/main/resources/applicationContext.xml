@@ -47,7 +47,5 @@
 		<property name="jdbcTemplate">
 			<ref bean="jdbcTemplate" />
 		</property>
-		<property name="dialect" value="xxxxx"></property>
-		<property name="underscoreToCamelCase" value="true"></property>
 	</bean>
 </beans>
